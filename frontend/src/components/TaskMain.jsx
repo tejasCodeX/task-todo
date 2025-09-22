@@ -7,7 +7,7 @@ import EditTask from "./EditTask";
 import Loading from "./ui/Loading";
 
 const TaskMain = () => {
-  const [currComponent, setCurrComponent] = useState("taskList");
+  const [currComponent, setCurrComponent] = useState("editTask");
 
   const showNoTaskScreen = function () {
     setCurrComponent("noTask");

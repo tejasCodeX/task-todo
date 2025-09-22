@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import MainLayout from "./components/MainLayout";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div>
+      <MainLayout>createTask</MainLayout>
+    </div>
+  );
+};
 
-export default App
+export default App;

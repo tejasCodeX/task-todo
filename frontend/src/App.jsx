@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import MainLayout from "./components/MainLayout";
+import TaskMain from "./components/TaskMain";
+import Loading from "./components/ui/Loading";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div>
+      <MainLayout>
+        <TaskMain />
+      </MainLayout>
+    </div>
+  );
+};
 
-export default App
+export default App;

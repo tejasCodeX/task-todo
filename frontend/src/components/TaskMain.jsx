@@ -1,29 +1,59 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import NoTask from "./NoTask";
 import TaskList from "./TaskList";
 import CreateTask from "./CreateTask";
 import ViewTask from "./ViewTask";
 import EditTask from "./EditTask";
 import Loading from "./ui/Loading";
+import fetchAPI from "./api/fetchtask";
 
 const TaskMain = () => {
   const [currComponent, setCurrComponent] = useState("viewTask");
+  const [tasks, setTasks] = useState([]);
 
-  const showNoTaskScreen = function () {
+  const showNoTaskScreen = useCallback(function () {
     setCurrComponent("noTask");
-  };
-  const showCreateTaskScreen = function () {
+  }, []);
+  const showCreateTaskScreen = useCallback(function () {
     setCurrComponent("createTask");
-  };
-  const showTaskListScreen = function () {
+  }, []);
+  const showTaskListScreen = useCallback(function () {
     setCurrComponent("taskList");
-  };
-  const showEditTaskScreen = function () {
+  }, []);
+  const showEditTaskScreen = useCallback(function () {
     setCurrComponent("editTask");
-  };
-  const showViewtaskScreen = function () {
+  }, []);
+  const showViewtaskScreen = useCallback(function () {
     setCurrComponent("viewTask");
-  };
+  }, []);
+
+  const handleResponse = useCallback(
+    function (responseData) {
+      console.log(responseData);
+      const extractedTasks = responseData.tasks;
+      setTasks(extractedTasks);
+      if (extractedTasks.length) {
+        showTaskListScreen();
+      } else {
+        showNoTaskScreen();
+      }
+    },
+    [showTaskListScreen, showNoTaskScreen]
+  );
+  const handleError = useCallback(function (errorMesg) {
+    alert(errorMesg);
+    console.log(errorMesg);
+  }, []);
+  const fetchAllTasks = useCallback(
+    function () {
+      fetchAPI(handleResponse, handleError);
+    },
+    [handleResponse, handleError]
+  );
+
+  useEffect(() => {
+    fetchAllTasks();
+  }, [fetchAllTasks]);
   return (
     <>
       {currComponent === "loading" && <Loading />}

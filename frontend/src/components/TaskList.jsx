@@ -2,23 +2,23 @@ import React from "react";
 import folderImg from "../assets/folder-white.svg";
 import TaskTile from "./TaskTile";
 
-let tasks = [
-  {
-    title: "RCB Victory parade",
-    description: "Preparing for IPL 2026",
-    due_date: "05 June 2026",
-  },
-  {
-    title: "CSK Victory parade",
-    description: "Preparing for IPL 2026",
-    due_date: "05 June 2026",
-  },
-  {
-    title: "MI Victory parade",
-    description: "Preparing for IPL 2026",
-    due_date: "05 June 2026",
-  },
-];
+// let tasks = [
+//   {
+//     title: "RCB Victory parade",
+//     description: "Preparing for IPL 2026",
+//     due_date: "05 June 2026",
+//   },
+//   {
+//     title: "CSK Victory parade",
+//     description: "Preparing for IPL 2026",
+//     due_date: "05 June 2026",
+//   },
+//   {
+//     title: "MI Victory parade",
+//     description: "Preparing for IPL 2026",
+//     due_date: "05 June 2026",
+//   },
+// ];
 const TaskList = () => {
   return (
     <div className="task-list-screen content-section">

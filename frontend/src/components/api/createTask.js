@@ -7,7 +7,7 @@ async function createTaskAPI(values, handleResponse, handleError, setLoading) {
 
     // convert the values into JSON format
     const requestBody = JSON.stringify({
-      titile: values.taskTitle,
+      title: values.taskTitle,
       description: values.taskDescription,
       due_date: values.taskDueDate?.toISOString(),
     });
@@ -21,11 +21,13 @@ async function createTaskAPI(values, handleResponse, handleError, setLoading) {
     });
 
     const jsonData = await response.json();
+console.log(jsonData);
 
     if (!response.ok) {
       const errorMessage = jsonData.message || "unknown error occured";
       throw new Error(errorMessage);
     }
+    handleResponse(jsonData);
   } catch (error) {
     handleError(error);
   } finally {

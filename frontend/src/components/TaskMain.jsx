@@ -8,7 +8,7 @@ import Loading from "./ui/Loading";
 import fetchAPI from "./api/fetchtask";
 
 const TaskMain = () => {
-  const [currComponent, setCurrComponent] = useState("viewTask");
+  const [currComponent, setCurrComponent] = useState("loading");
   const [tasks, setTasks] = useState([]);
 
   const showNoTaskScreen = useCallback(function () {
@@ -58,9 +58,16 @@ const TaskMain = () => {
     <>
       {currComponent === "loading" && <Loading />}
       <div className="container-div">
-        {currComponent === "noTask" && <NoTask />}
+        {currComponent === "noTask" && (
+          <NoTask showCreateTaskScreen={showCreateTaskScreen} />
+        )}
         {currComponent === "taskList" && <TaskList />}
-        {currComponent === "createTask" && <CreateTask />}
+        {currComponent === "createTask" && (
+          <CreateTask
+            fetchAllTasks={fetchAllTasks}
+            showTaskListScreen={showTaskListScreen}
+          />
+        )}
         {currComponent === "viewTask" && <ViewTask />}
         {currComponent === "editTask" && <EditTask />}
       </div>
